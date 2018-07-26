@@ -1,7 +1,7 @@
 # spring-data-basic
 A Basic Spring Data with JPA Repository application
 
-###Notes:
+### Notes:
 
 This application has two entities Customer and Address. It has One to One relationship with unidirectional relationship with Customer entity owning the relationship.
 
