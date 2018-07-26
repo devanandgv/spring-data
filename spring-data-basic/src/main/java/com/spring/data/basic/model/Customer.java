@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.Cascade;
@@ -27,8 +28,9 @@ public class Customer {
 		this.name = name;
 	}
 
-	@OneToOne(mappedBy="customer")
+	@OneToOne
 	@Cascade(CascadeType.ALL)
+	@JoinColumn(name="address_id",unique=true, nullable=false, updatable=false)
 	private Address address;
 
 	public Long getId() {

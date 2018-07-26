@@ -1,29 +1,22 @@
 package com.spring.data.basic.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
-
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
 
 @Entity
 public class Address {
 
 	@Id
-	@GeneratedValue(generator="customer_generator")
-	@GenericGenerator(name="customer_generator",strategy="foreign",parameters
-	={@Parameter(name="property",value="customer")})
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="address_id")
 	private Long id;
 	private String street;
 	private String city;
 	private String country;
-	@OneToOne
-	@PrimaryKeyJoinColumn
-	private Customer customer;
-	
+
 	public Address() {
 
 	}
@@ -59,20 +52,9 @@ public class Address {
 		this.country = country;
 	}
 
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", street=" + street + ", city=" + city + ", country=" + country + ", customer="
-				+"]";
+		return "Address [id=" + id + ", street=" + street + ", city=" + city + ", country=" + country + "]";
 	}
-
-
 
 }
